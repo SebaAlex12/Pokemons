@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import ImagesList from "./components/gallery/ImagesList";
+import PokemonsList from "./store/Pokemons/components/PokemonsList";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { reducers } from "./reducers/index";
+import { reducers } from "./store/index";
 
 const store = createStore(
   reducers,
@@ -17,7 +17,7 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <div className="App">
-        <ImagesList />
+        <PokemonsList />
       </div>
     </Provider>
   );
