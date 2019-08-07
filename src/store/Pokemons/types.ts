@@ -1,10 +1,17 @@
 export interface Pokemon {
   name: string;
   url: string;
+  results: [];
+}
+
+export interface SelectedPokemon {
+  name: string;
+  sprites: string;
 }
 
 export interface PokemonsState {
   pokemons: Pokemon[];
+  selectedPokemon: SelectedPokemon[];
 }
 
 export enum ActionTypes {
@@ -19,7 +26,7 @@ export interface FetchPokemonsAction {
 
 export interface GetPokemonByUrlAction {
   type: ActionTypes.getPokemonByUrl;
-  payload: any;
+  payload: SelectedPokemon[];
 }
 
 export type PokemonsAction = FetchPokemonsAction | GetPokemonByUrlAction;
