@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 interface Iprops {
   pokemons: Pokemon[];
-  selectedPokemon: any;
+  selectedPokemon: SelectedPokemon;
   fetchPokemons(): void;
   getPokemonByUrl(url: string): void;
 }
@@ -19,7 +19,11 @@ class PokemonsList extends Component<Iprops> {
   };
 
   list(): JSX.Element {
-    const { pokemons } = this.props;
+    const {
+      pokemons,
+      selectedPokemon: { name }
+    } = this.props;
+
     const str = (
       <div className="list">
         <h1>Pokemons list / {pokemons.length}</h1>
@@ -27,6 +31,7 @@ class PokemonsList extends Component<Iprops> {
           {pokemons.map((pokemon, index) => {
             return (
               <button
+                className={pokemon.name == name ? "active" : ""}
                 onClick={() => this.pokemonOnClickEvent(pokemon.url)}
                 key={index}
               >
@@ -49,7 +54,7 @@ class PokemonsList extends Component<Iprops> {
       sprites: { front_default, front_shiny, back_default, back_shiny }
     } = this.props.selectedPokemon;
 
-    const str = (
+    return (
       <div className="details">
         <div className="name">{name}</div>
         <div className="base-experience">
@@ -73,7 +78,6 @@ class PokemonsList extends Component<Iprops> {
         </ul>
       </div>
     );
-    return str;
   }
 
   render() {
@@ -97,7 +101,7 @@ class PokemonsList extends Component<Iprops> {
 
 const mapStateToProps = (
   state: any
-): { pokemons: Pokemon[]; selectedPokemon: SelectedPokemon[] } => {
+): { pokemons: Pokemon[]; selectedPokemon: SelectedPokemon } => {
   return {
     pokemons: state.pokemons.pokemons,
     selectedPokemon: state.pokemons.selectedPokemon
