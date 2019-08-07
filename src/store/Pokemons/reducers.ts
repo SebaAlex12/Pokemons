@@ -1,21 +1,19 @@
 import { PokemonsState, ActionTypes, PokemonsAction } from "./types";
 
 const initialState: PokemonsState = {
-  pokemons: []
+  pokemons: [],
+  selectedPokemon: []
 };
 
 export const pokemonsReducer = (
-  state = initialState,
+  state: PokemonsState = initialState,
   action: PokemonsAction
 ): PokemonsState => {
   switch (action.type) {
     case ActionTypes.fetchPokemons:
-      return {
-        ...state,
-        pokemons: action.payload
-      };
+      return { ...state, pokemons: action.payload };
     case ActionTypes.getPokemonByUrl:
-      return action.payload;
+      return { ...state, selectedPokemon: action.payload };
     default:
       return state;
   }

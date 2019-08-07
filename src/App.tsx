@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import PokemonsList from "./store/Pokemons/components/PokemonsList";
+import "./store/Pokemons/pokemons.scss";
+
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";

@@ -3,16 +3,17 @@ import axios from "axios";
 import {
   Pokemon,
   PokemonsState,
+  SelectedPokemon,
   ActionTypes,
   FetchPokemonsAction,
   GetPokemonByUrlAction
 } from "./types";
 
-const url = "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20";
+const url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964";
 
 export const fetchPokemons = () => {
   return async (dispatch: Dispatch) => {
-    const response = await axios.get<any>(url, {
+    const response = await axios.get<Pokemon>(url, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json"
@@ -27,7 +28,7 @@ export const fetchPokemons = () => {
 
 export const getPokemonByUrl = (pcurl: string) => {
   return async (dispatch: Dispatch) => {
-    const response = await axios.get<Pokemon>(pcurl, {
+    const response = await axios.get<any>(pcurl, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json"
