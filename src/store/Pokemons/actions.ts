@@ -2,7 +2,6 @@ import { Dispatch } from "redux";
 import axios from "axios";
 import {
   Pokemon,
-  PokemonsState,
   SelectedPokemon,
   ActionTypes,
   FetchPokemonsAction,
@@ -28,7 +27,7 @@ export const fetchPokemons = () => {
 
 export const getPokemonByUrl = (pcurl: string) => {
   return async (dispatch: Dispatch) => {
-    const response = await axios.get<any>(pcurl, {
+    const response = await axios.get<SelectedPokemon[]>(pcurl, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json"
