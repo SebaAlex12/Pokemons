@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # GalleryPocket
 ## Webpage
 
-Application allow to betting football matches.
+Application allow to see.
 
 https://gallerypocket.herokuapp.com/
 
